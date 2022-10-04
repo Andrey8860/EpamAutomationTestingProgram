@@ -14,3 +14,7 @@ local.properties
 *.class
 *.log
 test-output/
+.settings/
+target/
+.classpath
+.project
