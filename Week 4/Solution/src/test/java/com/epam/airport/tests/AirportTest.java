@@ -44,7 +44,7 @@ public class AirportTest {
 		boolean listContainsTransportMilitaryPlanes = false;
 		
 		for (MilitaryPlane militaryPlane : transportMilitaryPlanes) {
-			if ((militaryPlane.getType() == MilitaryType.TRANSPORT)) {
+			if ((militaryPlane.getMilitaryPlaneType() == MilitaryType.TRANSPORT)) {
 				listContainsTransportMilitaryPlanes = true;
 				break;
 			}
@@ -86,7 +86,7 @@ public class AirportTest {
 		boolean listHasAtLeastOneBomberMilitaryPlane = false;
 		
 		for (MilitaryPlane militaryPlane : bomberMilitaryPlanes) {
-			if ((militaryPlane.getType() == MilitaryType.BOMBER)) {
+			if ((militaryPlane.getMilitaryPlaneType() == MilitaryType.BOMBER)) {
 				listHasAtLeastOneBomberMilitaryPlane = true;
 			}
 		}

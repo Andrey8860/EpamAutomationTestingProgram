@@ -5,7 +5,6 @@
 package com.epam.airport;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import com.epam.constants.MilitaryType;
@@ -13,13 +12,14 @@ import com.epam.planes.ExperimentalPlane;
 import com.epam.planes.MilitaryPlane;
 import com.epam.planes.PassengerPlane;
 import com.epam.planes.Plane;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
 
+@AllArgsConstructor
+@ToString
 public class Airport {
-	private List<? extends Plane> planes;
-
-	public Airport(List<? extends Plane> planes) {
-		this.planes = planes;
-	}
+	@Getter private List<? extends Plane> planes;
 
 	public List<PassengerPlane> getPassengerPlanes() {
 		List<PassengerPlane> passengerPlanes = new ArrayList<>();
@@ -50,8 +50,8 @@ public class Airport {
 		PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
 		
 		for (int i = 0; i < passengerPlanes.size(); i++) {
-			if (passengerPlanes.get(i).getPassengersCapacity() 
-					> planeWithMaxCapacity.getPassengersCapacity()) {
+			if (passengerPlanes.get(i).getMaximumPlanePassengerCapacity() 
+					> planeWithMaxCapacity.getMaximumPlanePassengerCapacity()) {
 				planeWithMaxCapacity = passengerPlanes.get(i);
 			}
 		}
@@ -63,7 +63,7 @@ public class Airport {
 		List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
 		
 		for (MilitaryPlane militaryPlane : getMilitaryPlanes()) {
-			if (militaryPlane.getType() == MilitaryType.TRANSPORT) {
+			if (militaryPlane.getMilitaryPlaneType() == MilitaryType.TRANSPORT) {
 				transportMilitaryPlanes.add(militaryPlane);
 			}
 		}
@@ -75,7 +75,7 @@ public class Airport {
 		List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
 		
 		for (MilitaryPlane militaryPlane : getMilitaryPlanes()) {
-			if (militaryPlane.getType() == MilitaryType.BOMBER) {
+			if (militaryPlane.getMilitaryPlaneType() == MilitaryType.BOMBER) {
 				bomberMilitaryPlanes.add(militaryPlane);
 			}
 		}
@@ -97,14 +97,14 @@ public class Airport {
 
 	public Airport sortByMaxDistance() {
 		Collections.sort(planes, (firstPlane, secondPlane) -> 
-			firstPlane.getPlaneMaximumFlightDistance() - secondPlane.getPlaneMaximumFlightDistance());
+			firstPlane.getMaximumFlightDistance() - secondPlane.getMaximumFlightDistance());
 		
 		return this;
 	}
 
 	public Airport sortByMaxSpeed() {
 		Collections.sort(planes, (firstPlane, secondPlane) -> 
-			firstPlane.getPlaneMaximumSpeed() - secondPlane.getPlaneMaximumSpeed());
+			firstPlane.getMaximumSpeed() - secondPlane.getMaximumSpeed());
 		
 		return this;
 	}
@@ -115,20 +115,4 @@ public class Airport {
 		
 		return this;
 	}
-
-	public List<? extends Plane> getPlanes() {
-		return planes;
-	}
-
-	private void printPlanes(Collection<? extends Plane> planes) {
-		for (Plane plane : planes) {
-			System.out.println(plane);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return "Airport{Planes=" + planes.toString() + '}';
-	}
-
 }
