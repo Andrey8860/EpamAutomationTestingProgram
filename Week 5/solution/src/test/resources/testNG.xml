@@ -1,0 +1,59 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Calculator Full Test Suite" parallel="classes" thread-count="2">
+	<test name="Positive / Negative Boolean Method">
+		<groups>
+			<run>
+				<include name="Positive / Negative Boolean Methods" />
+				<include name="Base Test" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.epam.calculator.tests" />
+		</packages>
+	</test>
+	<test name="Exponentiation">
+		<groups>
+			<run>
+				<include name="Exponentiation" />
+				<include name="Base Test" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.epam.calculator.tests" />
+		</packages>
+	</test>
+	<test name="Square Root">
+		<groups>
+			<run>
+				<include name="Square Root" />
+				<include name="Base Test" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.epam.calculator.tests" />
+		</packages>
+	</test>
+	<test name="Trigonometric Functions">
+		<groups>
+			<run>
+				<include name="Trigonometric Functions" />
+				<include name="Base Test" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.epam.calculator.tests" />
+		</packages>
+	</test>
+	<test name="Basic Math Operations">
+		<groups>
+			<run>
+				<include name="Basic Math Operations" />
+				<include name="Base Test" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.epam.calculator.tests" />
+		</packages>
+	</test>
+</suite>
