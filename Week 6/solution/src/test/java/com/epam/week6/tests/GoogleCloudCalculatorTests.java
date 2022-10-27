@@ -2,7 +2,6 @@ package com.epam.week6.tests;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.testng.Assert;
@@ -138,15 +137,9 @@ public class GoogleCloudCalculatorTests extends BaseTest {
 		
 		driver.switchTo().window(windowHandles.get(1));
 		
-		// Here the do-while loop is used, since we need to click the refresh button at 
-		// least once to see if email has come, and if it is not here yet - 
-		// we need to continue clicking
-		do {
-			yopmailEmailInboxPage.clickRefreshEmailsButton();
-		} while(driver.findElements(By.xpath("//div[text()='1 mail']")).size() == 0);
-		
+		yopmailEmailInboxPage.waitForEmail();
 		yopmailEmailInboxPage.switchToEmailIFrame();
-		emailEstimationResults = driver.findElements(By.xpath("//tr/td[2]/h3"));
+		emailEstimationResults = yopmailEmailInboxPage.getEstimationResultsFromEmail();
 		
 		Assert.assertTrue(emailEstimationResults.size() != 0 
 				&& expectedMonthlyRent.contains(emailEstimationResults.get(0).getText())

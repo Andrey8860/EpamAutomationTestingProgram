@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class GoogleCloudHomePage extends BasePage {
 
-	private static final String pageURL = "https://cloud.google.com/";
+	private static final String PAGE_URL = "https://cloud.google.com/";
 	
 	@FindBy(xpath="//div[@class='devsite-searchbox']/input")
 	private WebElement searchBox;
@@ -17,7 +17,7 @@ public class GoogleCloudHomePage extends BasePage {
 	}
 	
 	public void openPage() {
-		driver.get(pageURL);
+		driver.get(PAGE_URL);
 	}
 	
 	public void searchFor(String searchQuery) {

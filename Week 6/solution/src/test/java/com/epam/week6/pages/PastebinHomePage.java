@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class PastebinHomePage extends BasePage {
 	
-	private static final String pageURL = "https://pastebin.com";
+	private static final String PAGE_URL = "https://pastebin.com";
 	
 	@FindBy(xpath="//textarea[@id='postform-text']")
 	private WebElement pasteText;
@@ -34,7 +34,7 @@ public class PastebinHomePage extends BasePage {
 	}
 	
 	public void openPage() {
-		driver.get(pageURL);
+		driver.get(PAGE_URL);
 	}
 	
 	public void enterPasteText(String textToPaste) {
