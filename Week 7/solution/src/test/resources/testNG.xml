@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Week 7 Test Suite">
+	<test name="Sportchek Tests">
+		<packages>
+			<package name="com.epam.week7.tests" />
+		</packages>
+	</test>
+</suite>
