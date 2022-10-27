@@ -226,15 +226,12 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 	}
 	
 	private List<WebElement> getEstimationResults() {
-		return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By
-				.cssSelector(estimationResultsLocator)));
+		return waitSecondsForVisibilityOfAllElements(5, By.cssSelector(estimationResultsLocator));
 	}
 	
 	private List<WebElement> getAllOptionsOfAnActiveDropDown() {
-		return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By
-				.cssSelector(optionsOfAnActiveDropdownLocator)));
+		return waitSecondsForVisibilityOfAllElements(5, 
+				By.cssSelector(optionsOfAnActiveDropdownLocator));
 	}
 	
 	// This method provides the actual implementation of how a specific value 
@@ -245,8 +242,7 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 		for (WebElement dropdownOption : dropdownOptions) {
 			if (dropdownOption.getText().toLowerCase().contains(optionToSelect.toLowerCase())) {
 				dropdownOption.click();
-				new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
-						.invisibilityOfAllElements(dropdownOptions));
+				waitSecondsForInvisibilityOfAllElements(5, dropdownOptions);
 				break;
 			}
 		}

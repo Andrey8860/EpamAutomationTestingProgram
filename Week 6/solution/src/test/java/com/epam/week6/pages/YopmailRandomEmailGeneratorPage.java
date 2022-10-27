@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class YopmailRandomEmailGeneratorPage extends BasePage {
 	
-	private static final String pageURL = "https://yopmail.com/en/email-generator";
+	private static final String PAGE_URL = "https://yopmail.com/en/email-generator";
 	
 	@FindBy(xpath="//button[@onclick=\"egengo();\"]")
 	private WebElement checkInboxButton;
@@ -16,7 +16,7 @@ public class YopmailRandomEmailGeneratorPage extends BasePage {
 	}
 	
 	public void openPage() {
-		driver.get(pageURL);
+		driver.get(PAGE_URL);
 	}
 	
 	public void clickCheckInboxOfRandomEmailButton() {
