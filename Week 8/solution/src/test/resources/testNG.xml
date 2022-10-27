@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Week 8 Test Suite" parallel="tests" thread-count="3">
+	<test name="Windows Chrome Sportchek Tests">
+		<parameter name="instanceType" value="remote" />
+		<parameter name="browser" value="chrome" />
+		<parameter name="platform" value="windows" />
+		<packages>
+			<package name="com.epam.week8.tests" />
+		</packages>
+	</test>
+	<test name="Windows Edge Sportchek Tests">
+		<parameter name="instanceType" value="remote" />
+		<parameter name="browser" value="MicrosoftEdge" />
+		<parameter name="platform" value="windows" />
+		<packages>
+			<package name="com.epam.week8.tests" />
+		</packages>
+	</test>
+</suite>
