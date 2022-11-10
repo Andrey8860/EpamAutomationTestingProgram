@@ -43,11 +43,7 @@ public class SportchekStoreLocatorPage extends BasePage {
 		.sendKeys(Keys.ENTER)
 		.build().perform();
 		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		waitForPageReadyState();
 		
 		PageFactory.initElements(driver, this);
 	}

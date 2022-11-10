@@ -12,6 +12,10 @@ import com.epam.week8.pages.SportchekStoreLocatorPage;
 
 public class SportchekTests extends BaseTest {
 	
+	private final static String SIGN_OUT_TEST_FAIL_MESSAGE = "Sign out was unsuccessful";
+	private final static String PREFERRED_STORE_CHANGE_FROM_STORE_LOCATOR_TEST_FAIL_MESSAGE =
+			"Change of preferred store through store locator was unsuccessful";
+	
 	@Test
 	public void sportchekSignOutTest() {
 		String loginEmail = "testreg.12.4.2022_1@mailinator.com";
@@ -31,7 +35,7 @@ public class SportchekTests extends BaseTest {
 		sportchekHeader.clickHiUsernameLink();
 		sportchekHeader.clickSignOutButton();
 		
-		Assert.assertTrue(sportchekHeader.getSignInLink().isDisplayed(), "Sign out was unsuccessful");
+		Assert.assertTrue(sportchekHeader.getSignInLink().isDisplayed(), SIGN_OUT_TEST_FAIL_MESSAGE);
 	}
 	
 	@Test
@@ -55,7 +59,7 @@ public class SportchekTests extends BaseTest {
 		
 		Assert.assertTrue(storeDetailsPage.getStoreTitleInDetailedAddressSection().getText()
 				.equalsIgnoreCase(sportchekHeader.getPreferredStoreInHeader().getText()),
-				"Change of preferred store through store locator was unsuccessful");
+				PREFERRED_STORE_CHANGE_FROM_STORE_LOCATOR_TEST_FAIL_MESSAGE);
 	}
 	
 }
