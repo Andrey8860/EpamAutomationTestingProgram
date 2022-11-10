@@ -13,6 +13,12 @@ import com.epam.week7.pages.SportchekHeader;
 
 public class SportchekTests extends BaseTest {
 	
+	private final static String SIGN_OUT_TEST_FAIL_MESSAGE = "Sign out was unsuccessful";
+	private final static String PREFERRED_STORE_CHANGE_FROM_STORE_LOCATOR_TEST_FAIL_MESSAGE =
+			"Change of preferred store through store locator was unsuccessful";
+	private final static String SUBTOTAL_PRICE_IN_CART_FAIL_MESSAGE = 
+			"Subtotal is different than the actual price of the cart item";
+	
 	@Test
 	public void sportchekSignOutTest() {
 		String loginEmail = "testreg.12.4.2022_1@mailinator.com";
@@ -34,7 +40,7 @@ public class SportchekTests extends BaseTest {
 		sportchekHeader.clickHiUsernameLink();
 		sportchekHeader.clickSignOutButton();
 		
-		Assert.assertTrue(sportchekHeader.getSignInLink().isDisplayed(), "Sign out was unsuccessful");
+		Assert.assertTrue(sportchekHeader.getSignInLink().isDisplayed(), SIGN_OUT_TEST_FAIL_MESSAGE);
 	}
 	
 	@Test
@@ -56,9 +62,12 @@ public class SportchekTests extends BaseTest {
 		SportchekStoreDetailsPage storeDetailsPage = new SportchekStoreDetailsPage(driver);
 		SportchekHeader sportchekHeader = new SportchekHeader(driver);
 		
+		System.out.println(storeDetailsPage.getStoreTitleInDetailedAddressSection().getText());
+		System.out.println(sportchekHeader.getPreferredStoreInHeader().getText());
+		
 		Assert.assertTrue(storeDetailsPage.getStoreTitleInDetailedAddressSection().getText()
 				.equalsIgnoreCase(sportchekHeader.getPreferredStoreInHeader().getText()),
-				"Change of preferred store through store locator was unsuccessful");
+				PREFERRED_STORE_CHANGE_FROM_STORE_LOCATOR_TEST_FAIL_MESSAGE);
 	}
 	
 	@Test
@@ -76,6 +85,6 @@ public class SportchekTests extends BaseTest {
 
 		Assert.assertTrue(cartPage.getTotalPriceOfCartItem(0)
 				.equalsIgnoreCase(cartPage.getSubtotalFromOrderSummary()), 
-				"Subtotal is different than the actual price of the cart item");
+				SUBTOTAL_PRICE_IN_CART_FAIL_MESSAGE);
 	}
 }

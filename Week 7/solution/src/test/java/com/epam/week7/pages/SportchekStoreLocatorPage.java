@@ -37,16 +37,7 @@ public class SportchekStoreLocatorPage extends BasePage {
 		clickStoreSearchButton();
 		selectAutocompleteSearchResultAtIndex(0);
 		clickStoreSearchButton();
-		
-		//Thread.sleep() is not ok here, but I want to discuss how we can deal with refresh of elements, since I was
-		// not able to figure it out by myself
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		//searchResultsItems = waitUntilSearchResultsRefresh();
-		
+		waitForPageReadyState();
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -65,15 +56,6 @@ public class SportchekStoreLocatorPage extends BasePage {
 	public void selectAutocompleteSearchResultAtIndex(int index) {
 		getAutocompleteSearchResults().get(index).click();
 	}
-	
-	// This is how I tried to implement the wait for refresh, but it was unsuccessful
-	/*
-	private List<WebElement> waitUntilSearchResultsRefresh() {
-		return new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-				ExpectedConditions.refreshed(
-						ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(searchResultsLocator))));
-	}
-	*/
 	
 	private void enterStoreSearchQuery(String searchQuery) {
 		storeSearchInputField.sendKeys(searchQuery);

@@ -16,7 +16,7 @@ public class SportchekHeader extends BasePage {
 	private final String signOutButtonLocator = "//div[@class='nl-pencil-banner__sign-out']/button";
 	private final String hiUsernameLinkLocator = ".nl-sm-block #accountButton";
 	
-	@FindBy(xpath="(//span[@class='nl-store-locator--selected-store'])[2]")
+	@FindBy(css=".nl-primary-navigation .nl-store-locator--selected-store")
 	@Getter private WebElement preferredStoreInHeader;
 	
 	public SportchekHeader(WebDriver driver) {
