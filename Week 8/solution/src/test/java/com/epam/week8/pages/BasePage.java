@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.codeborne.selenide.Selenide;
 import com.epam.week8.javascript.JavaScriptExecutors;
 
 public abstract class BasePage {
@@ -65,4 +66,9 @@ public abstract class BasePage {
 	public void waitForThePageSpinnerToBeInvisible() {
 		waitSecondsForInvisibilityOfAnElement(10, By.cssSelector(".nl-spinner__content"));
 	}
+	
+	public void waitForPageReadyState() {
+		new WebDriverWait(driver, Duration.ofSeconds(30)).until(driver ->
+                "complete".equals(Selenide.executeJavaScript("return document.readyState")));
+    }
 }

@@ -13,6 +13,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import com.codeborne.selenide.WebDriverRunner;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
@@ -30,6 +32,7 @@ public class BaseTest {
 		} else {
 			setUpRemote(browser, platform);
 		}
+		WebDriverRunner.setWebDriver(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)
