@@ -14,12 +14,12 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.codeborne.selenide.WebDriverRunner;
+import com.epam.week8.service.TestDataReader;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	
-	private static final String HUB_URL = "http://192.168.0.36:4444";
 	protected WebDriver driver;
 
 	@Parameters({ "browser", "platform", "instanceType" })
@@ -45,7 +45,7 @@ public class BaseTest {
 	private void setUpLocal() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		setDriverImplicitWait(3);
 		driver.manage().window().maximize();
 	}
 
@@ -55,10 +55,16 @@ public class BaseTest {
 		
 		switch(platform.toLowerCase()) {
 			case "windows" -> capabilities.setPlatform(Platform.WINDOWS);
+			case "mac" -> capabilities.setPlatform(Platform.MAC);
 		};
 		
-		this.driver = new RemoteWebDriver(new URL(HUB_URL), capabilities);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		this.driver = new RemoteWebDriver(new URL(
+				TestDataReader.getTestDataReader().getHubURL()), capabilities);
+		setDriverImplicitWait(3);
 		driver.manage().window().maximize();
+	}
+	
+	private void setDriverImplicitWait(int secondsToWait) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(secondsToWait));
 	}
 }
