@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Week 10 Test Suite" parallel="classes" thread-count="2">
+	<test name="Google Calculator Tests">
+		<groups>
+			<run>
+				<include name="Smoke" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.epam.week10.tests" />
+		</packages>
+	</test>
+</suite>
