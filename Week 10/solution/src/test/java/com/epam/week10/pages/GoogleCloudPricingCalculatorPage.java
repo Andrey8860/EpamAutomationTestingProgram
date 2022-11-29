@@ -12,7 +12,8 @@ import com.epam.week10.util.DriverWaits;
 
 public class GoogleCloudPricingCalculatorPage extends BasePage {
 	
-	private String emailEstimationResultsButtonLocator = "#email_quote";
+	private String emailEstimationResultsButtonLocator = 
+			"//button[@ng-click='cloudCartCtrl.showEmailForm();']";
 	private WebElement emailEstimationResultsButton;
 	
 	private String emailEstimateEmailTextFieldLocator = "//input[@type='email']";
@@ -42,7 +43,7 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 	
 	public GoogleCloudPricingCalculatorPage clickEmailEstimationResultsButton() {
 		emailEstimationResultsButton = DriverWaits.waitSecondsForVisibilityOfAnElement(driver,
-				5, By.cssSelector(emailEstimationResultsButtonLocator));
+				5, By.xpath(emailEstimationResultsButtonLocator));
 		js.highlightElement(emailEstimationResultsButton);
 		emailEstimationResultsButton.click();
 		logger.info("Clicked email estimation results button");
