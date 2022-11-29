@@ -22,7 +22,8 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 			"//button[contains(@ng-click, 'addComputeServer')]";
 	private WebElement addToEstimateButton;
 	
-	private String emailEstimationResultsButtonLocator = "#email_quote";
+	private String emailEstimationResultsButtonLocator = 
+			"//button[@ng-click='cloudCartCtrl.showEmailForm();']";
 	private WebElement emailEstimationResultsButton;
 	
 	private String emailEstimateEmailTextFieldLocator = "//input[@type='email']";
@@ -254,7 +255,7 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 	
 	public GoogleCloudPricingCalculatorPage clickEmailEstimationResultsButton() {
 		emailEstimationResultsButton = waitSecondsForVisibilityOfAnElement(
-				5, By.cssSelector(emailEstimationResultsButtonLocator));
+				5, By.xpath(emailEstimationResultsButtonLocator));
 		js.highlightElement(emailEstimationResultsButton);
 		emailEstimationResultsButton.click();
 		logger.info("Clicked email estimation results button");
