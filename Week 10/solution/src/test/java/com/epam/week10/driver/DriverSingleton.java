@@ -2,6 +2,8 @@ package com.epam.week10.driver;
 
 import org.openqa.selenium.WebDriver;
 
+import com.epam.week10.service.TestDataReader;
+
 public class DriverSingleton {
 
 	// Here the Singleton pattern is already implemented
@@ -17,7 +19,7 @@ public class DriverSingleton {
 	
 	public static WebDriver getDriver() {
 		if (driver == null) {
-			switch (System.getProperty("browser")) {
+			switch (TestDataReader.getReader().getBrowser()) {
 				case "edge": {
 					driver = new EdgeDriverCreator().createWebDriver();
 					break;
