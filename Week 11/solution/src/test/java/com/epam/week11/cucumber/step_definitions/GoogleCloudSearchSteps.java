@@ -1,0 +1,35 @@
+package com.epam.week11.cucumber.step_definitions;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import com.epam.week11.driver.DriverSingleton;
+import com.epam.week11.pages.GoogleCloudHomePage;
+import com.epam.week11.pages.GoogleCloudSearchResultsPage;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class GoogleCloudSearchSteps {
+	
+	private final static String GOOGLE_CLOUD_SEARCH_TEST_FAIL_MESSAGE =
+			"Search results are not available";
+	
+	private GoogleCloudHomePage googleCloudHomePage;
+	private GoogleCloudSearchResultsPage googleCloudSearchResultsPage;
+	private WebDriver driver = DriverSingleton.getDriver();
+
+	@When("I search for the {string}")
+	public void i_search_for_the(String searchQuery) {
+		googleCloudHomePage = new GoogleCloudHomePage(driver);
+		googleCloudHomePage.searchFor(searchQuery);
+	}
+	
+	@Then("Search results are available")
+	public void search_results_are_available() {
+		googleCloudSearchResultsPage = new GoogleCloudSearchResultsPage(driver);
+		
+		Assert.assertTrue(googleCloudSearchResultsPage
+				.getSearchResults()
+				.isDisplayed()
+				, GOOGLE_CLOUD_SEARCH_TEST_FAIL_MESSAGE);
+	}	
+}
