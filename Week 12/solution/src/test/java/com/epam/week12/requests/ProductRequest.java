@@ -23,7 +23,6 @@ public class ProductRequest extends BaseRequest {
 	private Banner banner;
 	private String environment;
 	private String product;
-	private String locale;
 	private String storeId;
 	
 	// This constructor allows enough flexibility to make any product request. At the same time, I do not forbid
