@@ -13,13 +13,12 @@ public class GoogleCloudSearchSteps {
 	private final static String GOOGLE_CLOUD_SEARCH_TEST_FAIL_MESSAGE =
 			"Search results are not available";
 	
-	private GoogleCloudHomePage googleCloudHomePage;
+	WebDriver driver = DriverSingleton.getDriver();
+	GoogleCloudHomePage googleCloudHomePage  = new GoogleCloudHomePage(driver);
 	private GoogleCloudSearchResultsPage googleCloudSearchResultsPage;
-	private WebDriver driver = DriverSingleton.getDriver();
 
 	@When("I search for the {string}")
 	public void i_search_for_the(String searchQuery) {
-		googleCloudHomePage = new GoogleCloudHomePage(driver);
 		googleCloudHomePage.searchFor(searchQuery);
 	}
 	
