@@ -35,7 +35,7 @@ public class BaseSteps {
 		DriverSingleton.closeDriver();
 	}
 	
-	@After
+	//@After
 	public void takeScreenshot(Scenario scenario) throws IOException{
 	    File screenshot;
 		

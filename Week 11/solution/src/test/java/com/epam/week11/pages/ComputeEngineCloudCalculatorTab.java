@@ -5,37 +5,31 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import com.epam.week11.util.DriverWaits;
 
 public class ComputeEngineCloudCalculatorTab extends GoogleCloudPricingCalculatorPage {
 	
-	private String numberOfInstancesLocator = 
-			"//input[@ng-model='listingCtrl.computeServer.quantity']";
+	@FindBy(xpath = "//input[@ng-model='listingCtrl.computeServer.quantity']")
 	private WebElement numberOfInstances;
 	
-	private String addGPUCheckboxLocator = 
-			"//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']";
+	@FindBy(xpath = "//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']")
 	private WebElement addGPUCheckbox;
 	
-	private String addToEstimateButtonLocator = 
-			"//button[contains(@ng-click, 'addComputeServer')]";
+	@FindBy(xpath = "//button[contains(@ng-click, 'addComputeServer')]")
 	private WebElement addToEstimateButton;
 	
-	private String operatingSystemDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.os']";
+	@FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.os']")
 	private WebElement operatingSystemDropDown;
 	
-	private String vMClassDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.class']";
+	@FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.class']")
 	private WebElement vMClassDropDown;	
 	
-	private String machineTypeSeriesDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.series']";
+	@FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.series']")
 	private WebElement machineTypeSeriesDropDown;
 	
-	private String machineTypeDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.instance']";
+	@FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.instance']")
 	private WebElement machineTypeDropDown;
 	
 	private String gGPUTypeDropDownLocator = "//md-select[@placeholder='GPU type']";
@@ -44,41 +38,17 @@ public class ComputeEngineCloudCalculatorTab extends GoogleCloudPricingCalculato
 	private String numberOfGPUDropDownLocator = "//md-select[@placeholder='Number of GPUs']";
 	private WebElement numberOfGPUDropDown;
 	
-	private String localSSDDropDownLocator = "//md-select[@placeholder='Local SSD']";
+	@FindBy(xpath = "//md-select[@placeholder='Local SSD']")
 	private WebElement localSSDDropDown;
 	
-	private String datacenterLocationDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.location']";
+	@FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.location']")
 	private WebElement datacenterLocationDropDown;
 	
-	private String commitedUsageDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.cud']";
+	@FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.cud']")
 	private WebElement commitedUsageDropDown;
 	
 	public ComputeEngineCloudCalculatorTab(WebDriver driver) {
 		super(driver);
-	}
-	
-	// This method initializes all the elements which are present by default once the focus 
-	// switches to the calculator Iframe. It does not initialize dynamic elements which 
-	// are not present at this point
-	public ComputeEngineCloudCalculatorTab initializeCalculatorIFrameElements() {
-		numberOfInstances = driver.findElement(By.xpath(numberOfInstancesLocator));
-		addGPUCheckbox = driver.findElement(By.xpath(addGPUCheckboxLocator));
-		addToEstimateButton = driver.findElement(By.xpath(addToEstimateButtonLocator));
-		operatingSystemDropDown = driver.findElement(
-				By.xpath(operatingSystemDropDownLocator));
-		vMClassDropDown = driver.findElement(By.xpath(vMClassDropDownLocator));
-		machineTypeSeriesDropDown = driver.findElement(
-				By.xpath(machineTypeSeriesDropDownLocator));
-		machineTypeDropDown = driver.findElement(By.xpath(machineTypeDropDownLocator));
-		datacenterLocationDropDown = driver.findElement(
-				By.xpath(datacenterLocationDropDownLocator));
-		commitedUsageDropDown = driver.findElement(By.xpath(commitedUsageDropDownLocator));
-		
-		logger.info("Initialized calculator's IFrame elements");
-		
-		return this;
 	}
 	
 	public ComputeEngineCloudCalculatorTab setNumberOfInstances(String numberOfInstances) {
@@ -182,8 +152,6 @@ public class ComputeEngineCloudCalculatorTab extends GoogleCloudPricingCalculato
 	// Local SSD dropdown is available at all, since not every combination of
 	// a virtual machine has this option
 	public List<WebElement> getLocalSSDOptions() {
-			localSSDDropDown = DriverWaits.waitSecondsForVisibilityOfAnElement(driver,
-					5, By.xpath(localSSDDropDownLocator));
 			localSSDDropDown.click();
 			logger.info("Retrieving a list of local SSD options");
 			return getAllOptionsOfAnActiveDropDown();

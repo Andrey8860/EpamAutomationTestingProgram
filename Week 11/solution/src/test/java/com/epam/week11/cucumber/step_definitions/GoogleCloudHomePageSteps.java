@@ -9,12 +9,11 @@ import io.cucumber.java.en.Given;
 
 public class GoogleCloudHomePageSteps {
 	
-	private GoogleCloudHomePage googleCloudHomePage;
-	private WebDriver driver = DriverSingleton.getDriver();
+	WebDriver driver = DriverSingleton.getDriver();
+	GoogleCloudHomePage googleCloudHomePage = new GoogleCloudHomePage(driver);
 	
 	@Given("I am on the Google Cloud Home Page")
 	public void i_am_on_the_google_cloud_home_page() {
-		googleCloudHomePage = new GoogleCloudHomePage(driver);
 		googleCloudHomePage.openPage();
 	}
 	
