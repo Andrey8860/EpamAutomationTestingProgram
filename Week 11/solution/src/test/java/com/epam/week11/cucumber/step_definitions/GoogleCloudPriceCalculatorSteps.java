@@ -26,16 +26,17 @@ public class GoogleCloudPriceCalculatorSteps {
 	private final static String CALCULATOR_TAB_ESTIMATION_RESULTS_FAIL_MESSAGE =
 			"Estimation results on the calculator page are not as expected";
 	
-	private GoogleCloudSearchResultsPage googleCloudSearchResultsPage;
+	WebDriver driver = DriverSingleton.getDriver();
+	private GoogleCloudSearchResultsPage googleCloudSearchResultsPage 
+		= new GoogleCloudSearchResultsPage(driver);
 	private GoogleCloudPricingCalculatorPage googleCloudPricingCalculatorPage;
 	private ComputeEngineCloudCalculatorTab computeEngineCloudCalculatorTab;
 	private YopmailRandomEmailGeneratorPage yopmailRandomEmailGeneratorPage;
 	private YopmailEmailInboxPage yopmailEmailInboxPage;
-	private WebDriver driver = DriverSingleton.getDriver();
+	
 	
 	@When("I click on the search results which contains {string}")
 	public void i_click_on_the_search_results_which_contains(String searchQuery) {
-		googleCloudSearchResultsPage = new GoogleCloudSearchResultsPage(driver);
 		googleCloudSearchResultsPage.goToSpecificSearchResultWhichContainsSpecificText(searchQuery);
 	}
 
@@ -50,7 +51,6 @@ public class GoogleCloudPriceCalculatorSteps {
 		googleCloudPricingCalculatorPage = new GoogleCloudPricingCalculatorPage(driver);
 		googleCloudPricingCalculatorPage.switchFocusToCalculatorIFrame();
 		computeEngineCloudCalculatorTab = new ComputeEngineCloudCalculatorTab(driver);
-		computeEngineCloudCalculatorTab.initializeCalculatorIFrameElements();
 	}
 
 	@When("I fill the number of instances with {string}")
