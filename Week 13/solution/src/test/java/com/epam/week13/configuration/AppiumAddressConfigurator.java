@@ -13,7 +13,8 @@ public class AppiumAddressConfigurator {
 	
 	private static final Logger LOGGER = LogManager.getRootLogger();
 	private static AppiumDriverLocalService appiumDriverLocalService;
-	private static final String KILL_NODE_COMMAND = "taskkill /F /IM node.exe";
+	private static final String KILL_NODE_COMMAND = 
+			ConfigurationReader.getReader().getOperatingSystemProperty("kill.node.command");
 	
 	private AppiumAddressConfigurator() {
 		
