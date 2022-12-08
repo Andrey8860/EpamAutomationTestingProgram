@@ -10,8 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleCloudPricingCalculatorPage extends BasePage {
 	
-	private String numberOfInstancesLocator = 
-			"//input[@ng-model='listingCtrl.computeServer.quantity']";
+	private String numberOfInstancesLocator = "#input_90";
 	private WebElement numberOfInstances;
 	
 	private String addGPUCheckboxLocator = 
@@ -32,20 +31,16 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 			"//button[@aria-label='Send Email']";
 	private WebElement sendEmailButtonOnEmailYourEstimateForm;
 	
-	private String operatingSystemDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.os']";
+	private String operatingSystemDropDownLocator = "#select_103";
 	private WebElement operatingSystemDropDown;
 	
-	private String vMClassDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.class']";
+	private String vMClassDropDownLocator = "#select_107";
 	private WebElement vMClassDropDown;	
 	
-	private String machineTypeSeriesDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.series']";
+	private String machineTypeSeriesDropDownLocator = "#select_115";
 	private WebElement machineTypeSeriesDropDown;
 	
-	private String machineTypeDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.instance']";
+	private String machineTypeDropDownLocator = "#select_117";
 	private WebElement machineTypeDropDown;
 	
 	private String gGPUTypeDropDownLocator = "//md-select[@placeholder='GPU type']";
@@ -57,12 +52,10 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 	private String localSSDDropDownLocator = "//md-select[@placeholder='Local SSD']";
 	private WebElement localSSDDropDown;
 	
-	private String datacenterLocationDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.location']";
+	private String datacenterLocationDropDownLocator = "#select_123";
 	private WebElement datacenterLocationDropDown;
 	
-	private String commitedUsageDropDownLocator = 
-			"//md-select[@ng-model='listingCtrl.computeServer.cud']";
+	private String commitedUsageDropDownLocator = "#select_130";
 	private WebElement commitedUsageDropDown;
 	
 	private String estimationResultsLocator = "#resultBlock md-list-item";
@@ -85,18 +78,18 @@ public class GoogleCloudPricingCalculatorPage extends BasePage {
 	// switches to the calculator Iframe. It does not initialize dynamic elements which 
 	// are not present at this point
 	public void initializeCalculatorIFrameElements() {
-		numberOfInstances = driver.findElement(By.xpath(numberOfInstancesLocator));
+		numberOfInstances = driver.findElement(By.cssSelector(numberOfInstancesLocator));
 		addGPUCheckbox = driver.findElement(By.xpath(addGPUCheckboxLocator));
 		addToEstimateButton = driver.findElement(By.xpath(addToEstimateButtonLocator));
 		operatingSystemDropDown = driver.findElement(
-				By.xpath(operatingSystemDropDownLocator));
-		vMClassDropDown = driver.findElement(By.xpath(vMClassDropDownLocator));
+				By.cssSelector(operatingSystemDropDownLocator));
+		vMClassDropDown = driver.findElement(By.cssSelector(vMClassDropDownLocator));
 		machineTypeSeriesDropDown = driver.findElement(
-				By.xpath(machineTypeSeriesDropDownLocator));
-		machineTypeDropDown = driver.findElement(By.xpath(machineTypeDropDownLocator));
+				By.cssSelector(machineTypeSeriesDropDownLocator));
+		machineTypeDropDown = driver.findElement(By.cssSelector(machineTypeDropDownLocator));
 		datacenterLocationDropDown = driver.findElement(
-				By.xpath(datacenterLocationDropDownLocator));
-		commitedUsageDropDown = driver.findElement(By.xpath(commitedUsageDropDownLocator));
+				By.cssSelector(datacenterLocationDropDownLocator));
+		commitedUsageDropDown = driver.findElement(By.cssSelector(commitedUsageDropDownLocator));
 	}
 	
 	public void setNumberOfInstances(String numberOfInstances) {

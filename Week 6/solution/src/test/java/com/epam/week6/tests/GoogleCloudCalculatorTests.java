@@ -22,7 +22,7 @@ public class GoogleCloudCalculatorTests extends BaseTest {
 	
 	@Test(groups="Google Cloud Calculator Tests")
 	public void cloudPlatformPricingCalculatorTest() {
-		String searchQuery = "Google Cloud Pricing Calculator";
+		String searchQuery = "Google Cloud Platform Pricing Calculator";
 		String numberOfInstances = "4";
 		String operatingSystems = "Free: Debian";
 		String vMClass = "Regular";
@@ -81,11 +81,11 @@ public class GoogleCloudCalculatorTests extends BaseTest {
 	
 	@Test(groups="Google Cloud Calculator Tests")
 	public void cloudPlatformPricingCalculatorWithEmailTest() {
+<<<<<<< HEAD
 		String searchQuery = "Google Cloud Pricing Calculator";
-		String numberOfInstances = "4";
-		String operatingSystems = "Free: Debian";
+=======
+		String searchQuery = "Google Cloud Platform Pricing Calculator";
 		String vMClass = "Regular";
-		String machineTypeSeries = "N1";
 		String machineType = "n1-standard-8";
 		String numberOfGPUs = "1";
 		String gPUType = "NVIDIA Tesla V100";
